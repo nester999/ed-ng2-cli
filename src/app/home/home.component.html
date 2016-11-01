@@ -1,0 +1,5 @@
+<input type="search" name="search-bar" #searchBar placeholder="Search" (keyup)="getHeroImages(searchBar.value)">
+<p> home works! </p>
+<ul>
+  <li *ngFor="let horrorMovie of filtered">{{horrorMovie}}</li>
+</ul>
