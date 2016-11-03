@@ -22,6 +22,10 @@ import { NavComponent } from './nav/nav.component';
 import { HeroSliderComponent } from './hero-slider/hero-slider.component';
 import { ModalComponent } from './modal/modal.component';
 import { LoginComponent } from './login/login.component';
+import { UploadComponent } from './upload/upload.component';
+import { FooterComponent } from './footer/footer.component';
+import { PosterComponent } from './poster/poster.component';
+import { PosterSliderComponent } from './poster-slider/poster-slider.component';
 
 const myFirebaseAuthConfig = {
   provider: AuthProviders.Google,
@@ -42,7 +46,11 @@ const myFirebaseAuthConfig = {
     NavComponent,
     HeroSliderComponent,
     ModalComponent,
-    LoginComponent
+    LoginComponent,
+    UploadComponent,
+    FooterComponent,
+    PosterComponent,
+    PosterSliderComponent
   ],
   imports: [
     BrowserModule,
@@ -52,12 +60,16 @@ const myFirebaseAuthConfig = {
     RouterModule.forRoot([
           { path: 'sup/:id', component: SupComponent },
           { path: 'home', component: HomeComponent },
+          { path: 'movies', component: PosterSliderComponent },
+          { path: 'derp', component: DerpComponent },
+          { path: 'blarg', component: BlargComponent },
           { path: 'login', component: LoginComponent },
+          { path: 'upload', component: UploadComponent },
           {
-            path: 'derp',
+            path: 'streaming',
             component: HeroSliderComponent,
             data: {
-              title: 'Derp List'
+              title: 'Hero Slider List'
             }
           },
           { path: '', component: HomeComponent },

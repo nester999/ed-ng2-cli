@@ -2,18 +2,124 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>EdNg2CliDfw</title>
+  <title>EdNg2Cli</title>
   <base href="/">
 
+  <!-- custom icomoon font list -->
+  <link rel="stylesheet" href="app/fonts/icomoon-fonts.css">
+  <!-- animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
 
   <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
-
+  
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="
+  sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase-messaging.js"></script>
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>  <style>
+    .spinner {
+      width: 100%;
+      height:  100%;
+      background: rgba(0,0,0,0.3);
+      animation:  fade-in 15s forwards;
+      position: fixed;
+
+      /* display: inline-block; */
+    }
+    @-webkit-keyframes fade-in {
+      0% {
+        opacity:  0;
+      }
+      10% {
+        opacity:  1;
+      }
+    }
+
+    .spinner:after, .spinner:before {
+      display: block;
+      opacity:  0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .spinner-5 {
+      position:  absolute;
+      height: 100%;
+      width: 100%;
+      top:  50%;
+      left: 50%;
+      margin-left: -20px;
+    }
+
+    .spinner-5 span {
+      display: block;
+      height: 20px;
+      width: 20px;
+      background: #ddd;
+      border-radius: 50%;
+      position: absolute;
+      top: 0px;
+    }
+
+    .spinner-5 span:nth-child(1) {
+      left: -40px;
+      -webkit-animation: bounce 1s ease-in-out infinite;
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    .spinner-5 span:nth-child(2) {
+      -webkit-animation: bounce 1s ease-in-out 0.33s infinite;
+      animation: bounce 1s ease-in-out 0.33s infinite;
+    }
+
+    .spinner-5 span:nth-child(3) {
+      left: 40px;
+      -webkit-animation: bounce 1s ease-in-out 0.66s infinite;
+      animation: bounce 1s ease-in-out 0.66s infinite;
+    }
+
+    @-webkit-keyframes bounce {
+      0%, 75%, 100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+      }
+      25% {
+        -webkit-transform: translateY(-30px);
+        transform: translateY(-30px);
+      }
+    }
+
+
+    @keyframes bounce {
+      0%, 75%, 100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+      }
+      25% {
+        -webkit-transform: translateY(-30px);
+        transform: translateY(-30px);
+      }
+    }
+  </style>
+    <div class="spinner">
+      <div class="spinner-5">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div></app-root>
 </body>
 </html>

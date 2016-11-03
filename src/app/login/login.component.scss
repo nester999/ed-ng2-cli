@@ -5,6 +5,28 @@
   color: white;
   height: 100%;
   position: relative;
+  h4 {
+    white-space: nowrap;
+  }
+}
+
+[ng-reflect-hidden="true"] {
+  display: none;
+}
+
+#remember-me {
+  margin-left: 0.25em;
+}
+
+.profile-circle {
+  position: relative;
+  -webkit-border-radius: 50%;
+  -webkit-box-shadow: inset 0px -1px 1px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px -1px 1px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px -1px 1px 1px rgba(0, 0, 0, 0.75);
+  margin: 0 auto;
+  left: 40%;
+  width: 50px;
 }
 
 .forgot-password {
@@ -13,10 +35,6 @@
 
 .input-group {
   margin: 0.5em 0;
-}
-
-label {
-  color: #444;
 }
 
 .form-container button {
@@ -49,6 +67,15 @@ label {
 
 .twitter-login:hover {
   background: #6bd;
+}
+
+.github-login {
+  background: #333;
+  color: #fff;
+}
+
+.github-login:hover {
+  background: #444;
 }
 
 .google-login {

@@ -1,0 +1,25 @@
+footer {
+  // height: 200px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: none;
+}
+
+.footer-content {
+  position: absolute;
+  z-index: -1;
+  border-top: magenta 1px solid;
+  height: 200px;
+  width: 100%;
+  opacity: 0.3;
+  background: #000;
+}
+
+h1 {
+  position: absolute;
+  width: 100%;
+  padding: 0.3em;
+  z-index: 1;
+  color: #fff;
+}
