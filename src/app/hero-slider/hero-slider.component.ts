@@ -44,6 +44,7 @@ export class HeroSliderComponent implements OnInit {
     public images: Image[];
     getData: any;
     state: string = 'derp';
+    selectedTitle: Image;
 
     container;
     @Input() isInfinite = true;
@@ -62,26 +63,43 @@ export class HeroSliderComponent implements OnInit {
     
 
     constructor (private moviesService: MoviesService) {
+
     }
 
     ngOnInit() {
       this.getBackdropImages();
-      console.log('this.images ', this.images);
-      // this.setActive();
+      // console.log('this.images ', this.images);
     }
 
     toggleState() {
       this.state = this.state === 'derp' ? 'sup' : 'derp';
     }
 
-    setActive() {
-      this.images.forEach((image, i) => {
-        image.isActive = (this.curIndex === i);
-        // console.log('image[' + i + '].isActive ', image.isActive)
-        if(image.isActive) {
-          console.log('active image ', i);
+    onSelect(clickedTitle, i) {
+      // console.log('clickedTitle: ', clickedTitle);
+      this.selectedTitle = clickedTitle;
+      this.images[i].isActive = true;
+    }
+
+    resetActive() {
+      if(this.images) {
+        // console.log('this.images: ', this.images);
+        for (var i = 0; i < this.images.length; ++i) {
+          // this.images[i].isActive = false;
+          // console.log('image[' + i + '].isActive ', this.images[i].isActive)
+          if(this.images[i].isActive) {
+            console.log('active image. SHOULDNT SEE!', i);
+          }
         }
-      })
+        // this.images[this.visibleSlides].isActive = true;
+      }
+      // this.images.forEach((image, i) => {
+        // image.isActive = (this.curIndex === i);
+        // console.log('image[' + i + '].isActive ', image.isActive)
+        // if(image.isActive) {
+          // console.log('active image ', i);
+        // }
+      // })
     }
 
     resetCarousel(direction: string) { 
@@ -89,19 +107,19 @@ export class HeroSliderComponent implements OnInit {
       setTimeout(() => {
         // alert('in timeout');
         if(direction === 'next') {
-          console.log(this)
+          // console.log(this)
           this.currentlyLooping = true;
           this.images[this.curIndex].isActive = false;
-          // this.images[0].isActive = true;
+          this.images[0].isActive = true;
           this.curIndex = this.visibleSlides;
           this.moveCounter = -1 * (this.visibleSlides);
           // this.setActive();
         }
         else if(direction === 'prev') {
-          console.log('in prev', this)
+          // console.log('in prev', this)
           this.currentlyLooping = true;
           this.images[this.curIndex].isActive = false;
-          // this.images[0].isActive = true;
+          this.images[0].isActive = true;
           this.curIndex = this.totalNumberOfSlides - this.visibleSlides;
           this.moveCounter = -1 * (this.totalNumberOfSlides - this.visibleSlides);
           // this.setActive();
@@ -162,10 +180,9 @@ export class HeroSliderComponent implements OnInit {
                this.moveCounter = 0;
              }
              this.totalNumberOfSlides = this.images.length-1;
-             // this.images[0].isActive = true;
-             // this.images[this.images.length].isActive = false;
+             // this.images[this.visibleSlides].isActive = true;
              console.log('this.curIndex ', this.curIndex);
-             // this.setActive();
+             this.resetActive();
            },
            error => alert(error),
            () => console.log('finished')
@@ -174,6 +191,7 @@ export class HeroSliderComponent implements OnInit {
 
     prev() {
       this.currentlyLooping = false;
+      this.images[this.curIndex].isActive = false;
       if(this.isInfinite) {
         if(this.moveCounter < (this.visibleSlides)*-1 ) {
           this.moveCounter++;
@@ -203,6 +221,10 @@ export class HeroSliderComponent implements OnInit {
         console.log(this.curIndex + ' of ' + this.totalNumberOfSlides);
 
       }
+      this.images[this.curIndex].isActive = true;
+      // setTimeout(() => {
+      //   this.setActive();
+      // }, 1000);
       
     }
 
@@ -218,6 +240,7 @@ export class HeroSliderComponent implements OnInit {
 
     next() {
       this.currentlyLooping = false;
+      this.images[this.curIndex].isActive = false;
       // this.setActive();
       if(this.moveCounter >= ((this.totalNumberOfSlides - this.visibleSlides) * -1)) {
         this.moveCounter--;
@@ -227,9 +250,6 @@ export class HeroSliderComponent implements OnInit {
       else if(this.curIndex < this.totalNumberOfSlides) {
         this.curIndex++;
       }
-
-      // this.setActive();
-
       if(this.isInfinite) {
         if(this.curIndex > (this.totalNumberOfSlides - this.visibleSlides)) {
           
@@ -239,8 +259,9 @@ export class HeroSliderComponent implements OnInit {
           this.resetCarousel('next');
         }
       }
+      this.images[this.curIndex].isActive = true;
       // setTimeout(() => {
-        // this.setActive();
+      //   this.setActive();
       // }, 1000);
       
       // this.reorganizeSlides(1);

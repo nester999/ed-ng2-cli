@@ -11,12 +11,13 @@ import { Component,
 import {Image} from '../image';
 import { PosterComponent } from '../poster/poster.component';
 import { MoviesService } from '../movies.service';
+import { ModalComponent } from '../modal/modal.component'
 
 @Component({
   selector: 'ed-poster-slider',
   styleUrls: ['./poster-slider.component.scss'],
   templateUrl: './poster-slider.component.html',
-  directives: [ PosterComponent ],
+  // directives: [ PosterComponent ],
   providers: [ MoviesService ]
 })
 export class PosterSliderComponent { 
@@ -25,6 +26,7 @@ export class PosterSliderComponent {
   public posters: Image[];
   // getData: [];
   state: string = 'derp';
+  selectedTitle: Image;
 
   container;
   @Input() isInfinite = true;
@@ -52,6 +54,11 @@ export class PosterSliderComponent {
   toggleState() {
     this.state = this.state === 'derp' ? 'sup' : 'derp';
   }
+
+  onSelect(clickedTitle) {
+      console.log('poster-slider clickedTitle: ', clickedTitle);
+      this.selectedTitle = clickedTitle;
+    }
 
   setActive() {
     this.posters.forEach((poster, i) => {

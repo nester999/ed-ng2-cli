@@ -44,6 +44,8 @@ export class MoviesService {
           var curImage: Image = {
             title: movie.title,
             url: this.imgPath + 'w1280' + movie.backdrop_path,
+            posterUrl: this.imgPath + 'w500' + movie.poster_path,
+            posterSliderUrl: this.imgPath + 'w185' + movie.poster_path,
             isActive: false
           };
 
@@ -65,7 +67,9 @@ export class MoviesService {
         _results.forEach((movie, i) => {
           var curImage: Image = {
             title: movie.title,
-            url: this.imgPath + 'w185' + movie.poster_path,
+            url: this.imgPath + 'w1280' + movie.backdrop_path,
+            posterSliderUrl: this.imgPath + 'w185' + movie.poster_path,
+            posterUrl: this.imgPath + 'w500' + movie.poster_path,
             isActive: false
           };
 

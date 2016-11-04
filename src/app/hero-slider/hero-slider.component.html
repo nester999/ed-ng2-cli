@@ -1,6 +1,6 @@
 <div class="carousel" [style.height]="getCarouselHeight()">
   <ul class="slides" [style.marginLeft]="moveCarousel()" [style.width]="getSlidesWidth()" [style.transition]="switchTransition()">
-    <li *ngFor="let image of images; let i = index" class="slide" [style.left]="placeSlides(i)" [ngStyle]="{'width': imageWidth+'px', 'height': carouselHeight+'px'}" [ngClass]="{'active-slide': image.isActive}" #blarg (keyup)="0" data-toggle="modal" data-target="#edModal">
+    <li *ngFor="let image of images; let i = index" class="slide" [style.left]="placeSlides(i)" [ngStyle]="{'width': imageWidth+'px', 'height': carouselHeight+'px'}" [ngClass]="{'active-slide': image.isActive}" #blarg (keyup)="0" (click)="onSelect(image, index)" data-toggle="modal" data-target="#edModal">
       <h2>{{image.title}}</h2>
       <img src="{{image.url}}" alt="{{image.title}}" />
     </li>
@@ -13,7 +13,7 @@
   </li>
 </ul>
 
-<ed-modal [modalTitle]="blarg"></ed-modal>
+<ed-modal [modalTitle]="selectedTitle"></ed-modal>
 <!-- <button (click)="toggleState()">toggles</button> -->
 <!-- <h2 class="text-center" style="color: white;">moveCounter: {{moveCounter}}</h2>
 <h2 class="text-center" style="color: white;">curIndex: {{curIndex}}</h2>

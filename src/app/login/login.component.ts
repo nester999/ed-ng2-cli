@@ -18,24 +18,42 @@ export class LoginComponent implements OnInit {
 
   constructor(public af: AngularFire) {
     firebase.auth().onAuthStateChanged(firebaseUser => {
+      
+      
+      // this.loggedIn = true;  
+      // this.log = firebaseUser;
+      console.log('====');
+      console.log(firebaseUser);
+      console.log('====');
       if(firebaseUser) {
-        console.log('authStateChanged: ', firebaseUser);
-        this.loggedIn = true;
-        console.log('authStateChanged this ', this);
+        this.bk = true;
+        console.log('if firebaseUser loggedIn: ', this.loggedIn);
+        // console.log('authStateChanged: ', firebaseUser);
+        // this.loggedIn = true;
+        // console.log('authStateChanged this ', this);
         this.displayName = firebaseUser.displayName;
         this.profilePic = firebaseUser.photoURL;
+        if(firebaseUser.isAnonymous) {
+          this.loggedIn = true;
+          var isAnonymous = firebaseUser.isAnonymous;
+          this.displayName = 'Creeper';
+          this.profilePic = 'http://65.media.tumblr.com/avatar_9f2035ed5e7b_128.png';
+          var uid = firebaseUser.uid;
+          console.log('anonymous user id ', uid);
+        }
       } 
       else {
         console.log('not logged in anymore');
-        this.loggedIn = false;
+      this.loggedIn = false;
       }
     })
     // const auth = firebase.auth();
     // console.log('auth ', auth);
   }
-
+  bk: boolean = false;
+  log: string;
   ngOnInit() {
-
+    
   }
 
   onKeyEmail(email) {
@@ -64,16 +82,18 @@ export class LoginComponent implements OnInit {
   loginWithFacebook(email, pass) {
     var provider = new firebase.auth.FacebookAuthProvider();
     console.log('logging in with FB...');
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(result => {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var token = result.credential.accessToken;
       this.loggedIn = true;
       // The signed-in user info.
       var user = result.user;
+      console.log('facebook user ', user);
       // ...
-    }).catch(function(error) {
+    }).catch(error => {
       // Handle Errors here.
       // var errorCode = error.code;
+      // console.log('error message: ', error, '\nerror email: ', error.email, '\nerror credential: ', error.credential);
       var errorMessage = error.message;
       // The email of the user's account used.
       // var email = error.email;
@@ -85,18 +105,20 @@ export class LoginComponent implements OnInit {
 
   loginWithGoogle(email, pass) {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
       // The signed-in user info.
       var user = result.user;
       console.log('google user: ', result.user);
       this.loggedIn = true;
+      console.log('google this: ', this);
       this.displayName = user.displayName;
       // ...
-    }).catch(function(error) {
+    }).catch(error => {
       // Handle Errors here.
       // var errorCode = error.code;
+      // console.log('error message: ', error, '\nerror email: ', error.email, '\nerror credential: ', error.credential);
       var errorMessage = error.message;
       // The email of the user's account used.
       // var email = error.email;
@@ -108,7 +130,7 @@ export class LoginComponent implements OnInit {
 
   loginWithGithub(email, pass) {
     var provider = new firebase.auth.GithubAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
       // The signed-in user info.
@@ -117,14 +139,25 @@ export class LoginComponent implements OnInit {
       this.loggedIn = true;
       this.displayName = user.displayName;
       // ...
-    }).catch(function(error) {
+    }).catch(error => {
       // Handle Errors here.
       // var errorCode = error.code;
+      // console.log('error message: ', error, '\nerror email: ', error.email, '\nerror credential: ', error.credential);
       var errorMessage = error.message;
       // The email of the user's account used.
       // var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       // var credential = error.credential;
+      // ...
+    });
+  }
+
+  loginAnonymously() {
+    // this.loggedIn = true;
+    firebase.auth().signInAnonymously().catch(error => {
+      // Handle Errors here.
+      // var errorCode = error.code;
+      var errorMessage = error.message;
       // ...
     });
   }
@@ -140,7 +173,7 @@ export class LoginComponent implements OnInit {
         this.loggedIn = true;
       })
       .catch(e => {
-        console.log(e.message);
+        // console.log('error message: ', e, '\nerror email: ', e.email, '\nerror credential: ', e.credential);
         this.loggedIn = false;
       });
   }
@@ -158,8 +191,12 @@ export class LoginComponent implements OnInit {
     const auth = firebase.auth();
     console.log('log out');
     auth.signOut();
+    console.log('logout this: ', this);
     this.loggedIn = false;
-    this.displayName = ''
+    // this.emailField = '';
+    // this.passwordField = '';
+    this.displayName = '';
+    this.profilePic = '';
 
   }
 }

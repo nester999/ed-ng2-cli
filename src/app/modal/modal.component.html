@@ -1,12 +1,10 @@
-<div class="modal animated fade jello vertical-align-center" id="edModal">
+<div class="modal animated fade vertical-align-center" id="edModal">
   <div class="modal-dialog no-shadow" role="document">
     <div class="modal-content no-shadow no-border movie-modal">
-      <!-- <div class="modal-header no-border-bottom"> -->
-<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">{{modalTitle}}</h4> -->
-      <!-- </div> -->
+      <div class="modal-header no-border-bottom">
+        
+        <!-- <h4 class="modal-title" *ngIf="modalTitle">{{modalTitle.title}}</h4> -->
+      </div>
       <div class="modal-body no-margin-padding">
       
       
@@ -43,8 +41,12 @@
               </svg>
             </div>
             <div class="modal-poster-side col-md-6">
-              <img class="movie-poster-width" src="http://image.tmdb.org/t/p/w1920/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg">
+              <img class="movie-poster-width animated fadeInRight" *ngIf="modalTitle" src="{{modalTitle.posterUrl}}">
+<!--               <img class="movie-poster-width" *ngIf="!modalTitle" src="http://image.tmdb.org/t/p/w1920/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"> -->
             </div>
+            <button type="button" class="close translucent animated flipInY animation-delay" data-dismiss="modal" aria-label="Close">
+              <span class="icon-close-o dfw-modal-close" aria-hidden="true"></span>
+            </button>
             
           </div>
         </div>

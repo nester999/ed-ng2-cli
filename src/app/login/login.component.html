@@ -1,4 +1,4 @@
-<div> {{ (af.auth | async)?.uid }} </div>
+<!-- <div> {{ (af.auth | async)?.uid }} </div> -->
 <!--   <label>Email</label>  
   <input type="" name="" #emailInput>
   <label>Password</label>
@@ -13,27 +13,25 @@
   <button  *ngIf="loggedIn" (click)="logout()">Logout</button> -->
 
 <div class="form-container">
-  <form>
-    <h2>Login</h2>
-    <img *ngIf="loggedIn" class="profile-circle" src={{profilePic}}>
-    <h4 *ngIf="loggedIn">WHUDDUP, {{displayName}}</h4>
-    <div class="input-group col-md-12">
-      <span class="input-group-addon" id="basic-addon1"><span class="icon-mail4"></span></span>
-      <input type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" #emailInput (keyup)="onKeyEmail(email.value)" >
-    </div>
-    <div class="input-group col-md-12">
-      <span class="input-group-addon" id="basic-addon2"><span class="icon-key"></span></span>
-      <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon2" #passwordInput (keyup)="onKeyPassword(password.value)">
-    </div>
-    <a class="text-center col-md-12 forgot-password">Forgot Password</a>
-    <div class="input-group col-md-12 text-center">
-      <label for="remember-me">Remember me </label>
-      <input type="checkbox" id="remember-me"/>
-    </div>
-    <button *ngIf="!loggedIn" class="btn facebook-login center-block col-md-12" (click)="loginWithFacebook(emailInput.value, passwordInput.value)"><span class="icon-facebook"></span> Connect with Facebook</button>
-    <button *ngIf="!loggedIn" class="google-login btn center-block col-md-12" (click)="loginWithGoogle(emailInput.value, passwordInput.value)"><span class="icon-google-plus2" ></span> Connect with Google</button><button *ngIf="!loggedIn" class="github-login btn center-block col-md-12" (click)="loginWithGithub(emailInput.value, passwordInput.value)"><span class="icon-github" ></span> Connect with Github</button>
-    <button *ngIf="!loggedIn" class="btn submit-button center-block col-md-12" (click)="login(emailInput.value, passwordInput.value)">Login With Email/Password</button>
-    <button *ngIf="!loggedIn" class="btn create-account center-block col-md-12" (click)="signUp(emailInput.value, passwordInput.value)">Sign Up</button>   
-    <button *ngIf="loggedIn" class="logout btn center-block col-md-12" (click)="logout()"><span class="icon-exit"></span> Logout</button>
-  </form>
+  <img *ngIf="loggedIn" class="profile-circle" src={{profilePic}}>
+  <h4 *ngIf="loggedIn">WHUDDUP, {{displayName}}</h4>
+  <div class="input-group col-md-12">
+    <span class="input-group-addon" id="basic-addon1"><span class="icon-mail4"></span></span>
+    <input type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" #emailInput (keyup)="onKeyEmail(email.value)" >
+  </div>
+  <div class="input-group col-md-12">
+    <span class="input-group-addon" id="basic-addon2"><span class="icon-key"></span></span>
+    <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon2" #passwordInput (keyup)="onKeyPassword(password.value)">
+  </div>
+  <a class="text-center col-md-12 forgot-password">Forgot Password</a>
+  <div class="input-group col-md-12 text-center">
+    <label for="remember-me">Remember me </label>
+    <input type="checkbox" id="remember-me"/>
+  </div>
+  <button *ngIf="!loggedIn" class="btn facebook-login center-block col-md-12" (click)="loginWithFacebook(emailInput.value, passwordInput.value)"><span class="icon-facebook"></span> Connect with Facebook</button>
+  <button *ngIf="!loggedIn" class="google-login btn center-block col-md-12" (click)="loginWithGoogle(emailInput.value, passwordInput.value)"><span class="icon-google-plus2" ></span> Connect with Google</button><button *ngIf="!loggedIn" class="github-login btn center-block col-md-12" (click)="loginWithGithub(emailInput.value, passwordInput.value)"><span class="icon-github" ></span> Connect with Github</button>
+  <button *ngIf="!loggedIn" class="btn submit-button center-block col-md-12" (click)="login(emailInput.value, passwordInput.value)">Login With Email/Password</button>
+  <button *ngIf="!loggedIn" class="btn submit-button center-block col-md-12" (click)="loginAnonymously()">Login Anonymously</button>
+  <button *ngIf="!loggedIn" class="btn create-account center-block col-md-12" (click)="signUp(emailInput.value, passwordInput.value)">Sign Up</button>   
+  <button [hidden]="!loggedIn" class="logout btn center-block col-md-12" (click)="logout()"><span class="icon-exit"></span> Logout</button>
 </div>
