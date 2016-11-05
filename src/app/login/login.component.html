@@ -12,7 +12,7 @@
   <button  *ngIf="!loggedIn" (click)="overrideLogin()">Login Anonymously</button>
   <button  *ngIf="loggedIn" (click)="logout()">Logout</button> -->
 
-<div class="form-container">
+<div class="form-container animated flipInY">
   <img *ngIf="loggedIn" class="profile-circle" src={{profilePic}}>
   <h4 *ngIf="loggedIn">WHUDDUP, {{displayName}}</h4>
   <div class="input-group col-md-12">
