@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       
       
-      // this.loggedIn = true;  
+      this.loggedIn = true;  
       // this.log = firebaseUser;
       console.log('====');
       console.log(firebaseUser);

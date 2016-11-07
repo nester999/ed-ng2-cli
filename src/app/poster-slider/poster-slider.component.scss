@@ -1,6 +1,6 @@
 .wrap {
-  perspective: 2000px !important;
-  perspective-origin: 50% 114px !important;
+  perspective: 2000px;
+  perspective-origin: 50% 114px;
 }
 
 .poster-carousel {
@@ -42,7 +42,6 @@
 
 .slide {
   position: relative;
-  transform-style: preserve-3d;
   cursor: pointer;
   display: inline-block;
   // box-shadow: inset 10px 0px 20px 5px rgba(0, 0, 0, 0.6);
