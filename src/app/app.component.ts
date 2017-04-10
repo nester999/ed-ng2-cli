@@ -4,6 +4,7 @@ import { firebaseConfig } from '../environments/firebase.config';
 import { AngularFire, FirebaseListObservable } from "angularfire2/index";
 import { LessonsService } from "./shared/model/lessons.service";
 import { FirebaseService } from './firebase.service';
+import {trigger, animate, style, group, transition} from '@angular/animations';
 
 @Component({
   selector: 'app-root',

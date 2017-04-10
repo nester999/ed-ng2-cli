@@ -58,11 +58,12 @@
                 <input type="search" name="search-bar" #searchBar placeholder="Search" (keyup)="getFilteredKeywords(searchBar.value)">
                 <a [routerLink]="['/login']"><i class="fa fa-user"></i></a>
             </ul>
-            <ul style="position: absolute; background: white;">
-              <li *ngFor="let horrorMovie of filtered" style="list-style: none;">{{horrorMovie}}</li>
-            </ul>
         </div>
+        
         <!--/.nav-collapse -->
     </div>
     <!--/.container-fluid -->
 </nav>
+<ul style="position: absolute; background: white; right: 36px; width: 200px;border-radius: 0 0 4px 4px; padding: 9px 0 13px 33px; transform: translateY(-25px); transition: 0.3s all ease;">
+  <li *ngFor="let horrorMovie of filtered" style="list-style: none;">{{horrorMovie}}</li>
+</ul>
